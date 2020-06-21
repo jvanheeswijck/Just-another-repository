@@ -15,7 +15,7 @@ const board = document.getElementById('board');
 const winningMessageElement = document.getElementById('winningMessage');
 const restartButton = document.getElementById('restartButton');
 const winningMessageTextElement = document.querySelector('[data-winning-message-text]');
-let circleTurn;
+let isCircleTurn = false;
 
 startGame();
 
@@ -34,7 +34,7 @@ function startGame() {
 
 function handleClick(e) {
     const cell = e.target;
-    const currentClass = circleTurn ? CIRCLE_CLASS : X_CLASS;
+    const currentClass = isCircleTurn ? CIRCLE_CLASS : X_CLASS;
     placeMark(cell, currentClass);
     if (checkWin(currentClass)) {
         endGame(false);
@@ -49,7 +49,7 @@ function endGame(draw) {
     if (draw) {
         winningMessageTextElement.innerText = ('Draw!');
     } else {
-        winningMessageTextElement.innerText = `${circleTurn ? "O's" : "X's"} Wins!`;
+        winningMessageTextElement.innerText = `${isCircleTurn ? "O's" : "X's"} Wins!`;
     }
     winningMessageElement.classList.add("show");
 }
@@ -66,18 +66,18 @@ function placeMark(cell, currentClass) {
 }
 
 function setCircleTurnTo(shouldBeCircleTurn) {
-    circleTurn = shouldBeCircleTurn;
+    isCircleTurn = shouldBeCircleTurn;
     setBoardHoverClass();
 }
 
 function swapTurns() {
-    setCircleTurnTo(!circleTurn);
+    setCircleTurnTo(!isCircleTurn);
 }
 
 function setBoardHoverClass() {
     board.classList.remove(X_CLASS);
     board.classList.remove(CIRCLE_CLASS);
-    if (circleTurn) {
+    if (isCircleTurn) {
       board.classList.add(CIRCLE_CLASS);
     } else {
         board.classList.add(X_CLASS);
