@@ -23,6 +23,7 @@ restartButton.addEventListener('click', startGame);
 
 function startGame() {
     circleTurn = false;
+    setBoardHoverClass();
     cellElements.forEach(cell => {
         cell.classList.remove(X_CLASS)
         cell.classList.remove(CIRCLE_CLASS)
@@ -39,9 +40,7 @@ function handleClick(e) {
     if (checkWin(currentClass)) {
         endGame(false)
     } else if (isDraw()) { 
-        endGame(true)
-   //Switch Turns
-        
+        endGame(true)     
     } else {
         swapTurns();
         setBoardHoverClass();
