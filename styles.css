@@ -60,11 +60,11 @@ body {
 
 .cell.x::before,
 .cell.x::after {
-    background-color: chocolate;
+    background-color: rgb(42, 30, 210);
 }
 
 .cell.circle::before {
-    background-color: palegoldenrod;
+    background-color: rgb(248, 244, 7);
 }
 
 
