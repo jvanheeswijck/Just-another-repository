@@ -22,8 +22,7 @@ startGame();
 restartButton.addEventListener('click', startGame);
 
 function startGame() {
-    circleTurn = false;
-    setBoardHoverClass();
+    setCircleTurnTo(false);
     cellElements.forEach(cell => {
         cell.classList.remove(X_CLASS)
         cell.classList.remove(CIRCLE_CLASS)
@@ -43,7 +42,6 @@ function handleClick(e) {
         endGame(true)     
     } else {
         swapTurns();
-        setBoardHoverClass();
     }
 }
 
@@ -67,8 +65,13 @@ function placeMark(cell, currentClass) {
     cell.classList.add(currentClass);
 }
 
+function setCircleTurnTo(shouldBeCircleTurn) {
+    circleTurn = shouldBeCircleTurn;
+    setBoardHoverClass();
+}
+
 function swapTurns() {
-    circleTurn = !circleTurn
+    setCircleTurnTo(!circleTurn);
 }
 
 function setBoardHoverClass() {
