@@ -49,7 +49,7 @@ function endGame(draw) {
     if (draw) {
         winningMessageTextElement.innerText = ('Draw!');
     } else {
-        winningMessageTextElement.innerText = `${isCircleTurn ? "Squares" : "X's"} Wins!`;
+        winningMessageTextElement.innerText = `${isCircleTurn ? "D's" : "X's"} Wins!`;
     }
     winningMessageElement.classList.add("show");
 }

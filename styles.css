@@ -103,7 +103,7 @@ body {
 .board.circle .cell:not(.x):not(.circle):hover::after {
     content: '';
     position: absolute;
-    border-radius: 0px;
+    border-radius: 0px 30% 30% 0px;
 }
 
 .cell.circle::before,
