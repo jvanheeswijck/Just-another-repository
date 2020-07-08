@@ -135,17 +135,19 @@ body {
 }
 
 .winning-message button {
-    font-size: 3rem;
-    background-color: white;
-    border: 1px solid black;
+    color: lightcoral;
+    font-size: 5rem;
+    background-color: green;
+    border: 9px solid greenyellow;
     padding: .25em .5em;
     cursor: pointer; 
 } 
 
 .winning-message button:hover {
-    background-color: black;
-    color: white;
-    border-color: white;
+    background-color: red;
+    color: rgb(181, 224, 64);
+    border: 15px solid orange;
+
 }
 
 .winning-message.show {
