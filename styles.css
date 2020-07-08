@@ -137,16 +137,16 @@ body {
 .winning-message button {
     color: lightcoral;
     font-size: 5rem;
-    background-color: green;
-    border: 9px solid greenyellow;
+    background-color: greenyellow;
+    border: 9px solid green;
     padding: .25em .5em;
     cursor: pointer; 
 } 
 
 .winning-message button:hover {
-    background-color: red;
-    color: rgb(181, 224, 64);
-    border: 15px solid orange;
+    background-color: lightcoral;
+    color: greenyellow;
+    border: 9px solid  green;
 
 }
 
