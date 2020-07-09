@@ -14,6 +14,7 @@ const cellElements = document.querySelectorAll('[data-cell]');
 const board = document.getElementById('board');
 const winningMessageElement = document.getElementById('winningMessage');
 const restartButton = document.getElementById('restartButton');
+const showGameButton = document.getElementById('showGameButton');
 const winningMessageTextElement = document.querySelector('[data-winning-message-text]');
 const losingMessageTextElement = document.querySelector('[data-losing-message-text]');
 let isCircleTurn = false;
@@ -46,8 +47,18 @@ function handleClick(e) {
     }
 }
 
+showGameButton.addEventListener('click', showGame);
 
+function showGame() { 
+winningMessageElement.classList.remove('show')
+    if (isCircleTurn) {
+        setCircleTurnTo(false)
+    } else {
+        setCircleTurnTo(true)
+    }
+}
 
+ 
 function endGame(draw) {
     if (draw) {
         winningMessageTextElement.innerText = ('Draw!');
