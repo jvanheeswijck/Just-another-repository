@@ -50,18 +50,18 @@ function handleClick(e) {
 showGameButton.addEventListener('click', showGame);
 
 function showGame() { 
-winningMessageElement.classList.remove('show')
-    if (isCircleTurn) {
-        setCircleTurnTo(false)
-    } else {
-        setCircleTurnTo(true)
-    }
+    winningMessageElement.classList.remove('show')   
 }
 
  
 function endGame(draw) {
+    showEndGameScreen(draw);
+}
+
+function showEndGameScreen(draw) {
     if (draw) {
         winningMessageTextElement.innerText = ('Draw!');
+        losingMessageTextElement.innerText = ('');
     } else {
         winningMessageTextElement.innerText = `${isCircleTurn ? "D's" : "X's"} Wins!`;
         losingMessageTextElement.innerText = `${isCircleTurn ? "X's" : "D's"} Loses!`;
