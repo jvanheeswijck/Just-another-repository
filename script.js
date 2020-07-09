@@ -15,6 +15,7 @@ const board = document.getElementById('board');
 const winningMessageElement = document.getElementById('winningMessage');
 const restartButton = document.getElementById('restartButton');
 const winningMessageTextElement = document.querySelector('[data-winning-message-text]');
+const losingMessageTextElement = document.querySelector('[data-losing-message-text]');
 let isCircleTurn = false;
 
 startGame();
@@ -52,6 +53,7 @@ function endGame(draw) {
         winningMessageTextElement.innerText = ('Draw!');
     } else {
         winningMessageTextElement.innerText = `${isCircleTurn ? "D's" : "X's"} Wins!`;
+        losingMessageTextElement.innerText = `${isCircleTurn ? "X's" : "D's"} Loses!`;
     }
     winningMessageElement.classList.add("show");
 }
