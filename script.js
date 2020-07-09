@@ -18,6 +18,7 @@ const showGameButton = document.getElementById('showGameButton');
 const winningMessageTextElement = document.querySelector('[data-winning-message-text]');
 const losingMessageTextElement = document.querySelector('[data-losing-message-text]');
 let isCircleTurn = false;
+let isGameEnd = false;
 
 startGame();
 
@@ -32,18 +33,21 @@ function startGame() {
         cell.addEventListener('click', handleClick, {once: true});
       });
     winningMessageElement.classList.remove('show');
+    isGameEnd = false;
 }
 
 function handleClick(e) {
-    const cell = e.target;
-    const currentClass = isCircleTurn ? CIRCLE_CLASS : X_CLASS;
-    placeMark(cell, currentClass);
-    if (checkWin(currentClass)) {
-        endGame(false);
-    } else if (isDraw()) { 
-        endGame(true);
-    } else {
-        swapTurns();
+    if (!isGameEnd) {
+        const cell = e.target;
+        const currentClass = isCircleTurn ? CIRCLE_CLASS : X_CLASS;
+        placeMark(cell, currentClass);
+        if (checkWin(currentClass)) {
+            endGame(false);
+        } else if (isDraw()) { 
+            endGame(true);
+        } else {
+            swapTurns();
+        }
     }
 }
 
@@ -56,6 +60,7 @@ function showGame() {
  
 function endGame(draw) {
     showEndGameScreen(draw);
+    stopPlayerPlaying();
 }
 
 function showEndGameScreen(draw) {
@@ -67,6 +72,11 @@ function showEndGameScreen(draw) {
         losingMessageTextElement.innerText = `${isCircleTurn ? "X's" : "D's"} Loses!`;
     }
     winningMessageElement.classList.add("show");
+}
+
+function stopPlayerPlaying() {
+    //Prevent hover effect
+    isGameEnd = true;
 }
 
 function isDraw() {
