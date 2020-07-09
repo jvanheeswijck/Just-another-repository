@@ -129,16 +129,20 @@ body {
     background-color: rgba(0, 0, 0, .9);
     justify-content: center;
     align-items: center;
-    color: white;
-    font-size: 5rem;
+    color: rgb(219, 40, 40);
+    font-size: 6rem;
     flex-direction: column; 
+}
+
+.winning-message :hover {
+    color: darkcyan;
 }
 
 .winning-message button {
     color: lightcoral;
-    font-size: 5rem;
+    font-size: 6rem;
     background-color: greenyellow;
-    border: 9px solid green;
+    border: 15px solid green;
     padding: .25em .5em;
     cursor: pointer; 
 } 
@@ -146,7 +150,7 @@ body {
 .winning-message button:hover {
     background-color: lightcoral;
     color: greenyellow;
-    border: 9px solid  green;
+    border: 15px solid  green;
 
 }
 
