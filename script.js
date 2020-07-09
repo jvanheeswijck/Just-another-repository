@@ -75,9 +75,7 @@ function showEndGameScreen(draw) {
 }
 
 function stopPlayerPlaying() {
-    //Prevent hover effect
-    board.classList.remove(X_CLASS);
-    board.classList.remove(CIRCLE_CLASS);
+    removeBoardHoverClasses();
     isGameEnd = true;
 }
 
@@ -102,13 +100,17 @@ function swapTurns() {
 }
 
 function setBoardHoverClass() {
-    board.classList.remove(X_CLASS);
-    board.classList.remove(CIRCLE_CLASS);
+    removeBoardHoverClasses();
     if (isCircleTurn) {
         board.classList.add(CIRCLE_CLASS);
     } else {
         board.classList.add(X_CLASS);
     }
+}
+
+function removeBoardHoverClasses() {
+    board.classList.remove(X_CLASS);
+    board.classList.remove(CIRCLE_CLASS);  
 }
 
 function checkWin(currentClass) {
