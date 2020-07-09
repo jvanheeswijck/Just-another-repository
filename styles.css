@@ -134,29 +134,56 @@ body {
     flex-direction: column; 
 }
 
-.square {
-    background-color: lightgreen;
-    font-size: 5rem;
-    padding: 8px;
-}
-
 .winning-message :hover {
     color: darkcyan;
 }
 
+.square {
+    background-color: lightgreen;
+    font-size: 5rem;
+    padding: 1px;
+    border: 5px solid indigo;
+    color: darkblue;
+}
+
+
+
+.square:hover {
+    color: darkgoldenrod;
+    background-color: yellow;
+    border: 5px solid royalblue;
+}
+
+#showGameButton {
+    height: 100px;
+    width: 350px;
+    font-size: 3rem;
+    color: sandybrown;
+    background-color: silver;
+    border: 5px solid yellowgreen;
+}
+
+#showGameButton:hover {
+    color: thistle;
+    border: 5px solid rgb(55, 0, 255);
+    background-color: rgb(241, 157, 0);
+}
+
 .winning-message button {
     color: lightcoral;
-    font-size: 6rem;
+    font-size: 5rem;
     background-color: greenyellow;
-    border: 15px solid green;
-    padding: .25em .5em;
+    border: 5px solid green;
+    padding: 1px;
     cursor: pointer; 
+    width: 350px;
+    height: 100px;
 } 
 
 .winning-message button:hover {
     background-color: lightcoral;
     color: greenyellow;
-    border: 15px solid  green;
+    border: 5px solid  green;
 
 }
 
