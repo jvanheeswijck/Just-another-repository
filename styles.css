@@ -134,6 +134,12 @@ body {
     flex-direction: column; 
 }
 
+.square {
+    background-color: lightgreen;
+    font-size: 5rem;
+    padding: 8px;
+}
+
 .winning-message :hover {
     color: darkcyan;
 }
