@@ -76,6 +76,8 @@ function showEndGameScreen(draw) {
 
 function stopPlayerPlaying() {
     //Prevent hover effect
+    board.classList.remove(X_CLASS);
+    board.classList.remove(CIRCLE_CLASS);
     isGameEnd = true;
 }
 
@@ -103,7 +105,7 @@ function setBoardHoverClass() {
     board.classList.remove(X_CLASS);
     board.classList.remove(CIRCLE_CLASS);
     if (isCircleTurn) {
-      board.classList.add(CIRCLE_CLASS);
+        board.classList.add(CIRCLE_CLASS);
     } else {
         board.classList.add(X_CLASS);
     }
