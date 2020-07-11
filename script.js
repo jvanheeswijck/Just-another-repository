@@ -15,8 +15,10 @@ const board = document.getElementById('board');
 const winningMessageElement = document.getElementById('winningMessage');
 const restartButton = document.getElementById('restartButton');
 const showGameButton = document.getElementById('showGameButton');
+const undoButton = document.getElementById('undoButton')
 const winningMessageTextElement = document.querySelector('[data-winning-message-text]');
 const losingMessageTextElement = document.querySelector('[data-losing-message-text]');
+const peaceMessageTextElement = document.querySelector('[data-peace-message-text]');
 let isCircleTurn = false;
 let isGameEnd = false;
 
@@ -67,13 +69,32 @@ function showEndGameScreen(draw) {
     if (draw) {
         winningMessageTextElement.innerText = ('Draw!');
         losingMessageTextElement.innerText = ('');
+        peaceMessageTextElement.innerText = ('Peace')
+        undoButton.innerText = ('Undo')
     } else {
         winningMessageTextElement.innerText = `${isCircleTurn ? "D's" : "X's"} Wins!`;
         losingMessageTextElement.innerText = `${isCircleTurn ? "X's" : "D's"} Loses!`;
+        peaceMessageTextElement.innerText = ('Peace')
+        undoButton.innerText = ('Undo')
     }
     winningMessageElement.classList.add("show");
 }
 
+undoButton.addEventListener('click', undoTurn)
+
+function undoTurn() {
+    if(!isCircleTurn) {
+    cellElements.forEach( cell => {
+        cell.classList.add(X_CLASS)
+        cell.classList.remove(CIRCLE_CLASS)
+      }) 
+} else {
+    cellElements.forEach(cell=> {
+        cell.classList.add(CIRCLE_CLASS)
+        cell.classList.remove(X_CLASS)
+    })
+}
+}
 function stopPlayerPlaying() {
     removeBoardHoverClasses();
     isGameEnd = true;
