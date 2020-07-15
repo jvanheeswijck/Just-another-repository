@@ -154,13 +154,13 @@ body {
     background-color: rgba(0, 0, 0, .9);
     justify-content: center;
     align-items: center;
-    color: rgb(219, 40, 40);
+    color: midnightblue;
     font-size: 6rem;
     flex-direction: column; 
 }
 
 .winning-message :hover {
-    color: darkcyan;
+    color: hotpink;
 }
 
 .square {
@@ -234,9 +234,7 @@ body {
     position: fixed;
     top: 0px;
     left: 0px;
-    right: 0px;
-    bottom: 0px;
-    height: 70px;
+    height: 80px;
     width: 250px;
     color: black;
     background-color: white;
@@ -248,6 +246,29 @@ body {
     color: white;
     background-color: black;
     border: 5px solid white;
+}
+
+#undoButton {
+    display: none;
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    height: 80px;
+    width: 250px;
+    color: black;
+    background-color: white;
+    border: 5px solid black;
+    font-size: 2rem;
+}
+
+#undoButton:hover {
+    color: white;
+    background-color: black;
+    border: 5px solid white;
+}
+
+#undoButton.show {
+    display: block;
 }
 
 .winning-message button {

@@ -19,9 +19,11 @@ const restartButton = document.getElementById('restartButton');
 const showGameButton = document.getElementById('showGameButton');
 const takeOverButton = document.getElementById('takeOverButton');
 const mainMenuButton = document.getElementById('mainMenuButton');
+const undoButton = document.getElementById('undoButton')
 const winningMessageTextElement = document.querySelector('[data-winning-message-text]');
 const losingMessageTextElement = document.querySelector('[data-losing-message-text]');
 const peaceMessageTextElement = document.querySelector('[data-peace-message-text]');
+let lastMarkPlaced = null;
 let isCircleTurn = false;
 let isGameEnd = false;
 
@@ -32,13 +34,19 @@ restartButton.addEventListener('click', startGame);
 function startGame() {
     setCircleTurnTo(false);
     cellElements.forEach(cell => {
-        cell.classList.remove(X_CLASS);
-        cell.classList.remove(CIRCLE_CLASS);
-        cell.removeEventListener('click', handleClick);
-        cell.addEventListener('click', handleClick, {once: true});
+        resetCell(cell);
       });
     winningMessageElement.classList.remove('show');
+    undoButton.classList.add('show')
     isGameEnd = false;
+    lastMarkPlaced = null;
+}
+
+function resetCell(cell) {
+    cell.classList.remove(X_CLASS);
+    cell.classList.remove(CIRCLE_CLASS);
+    cell.removeEventListener('click', handleClick);
+    cell.addEventListener('click', handleClick, {once: true});
 }
 
 function handleClick(e) {
@@ -58,7 +66,7 @@ function handleClick(e) {
 
 showGameButton.addEventListener('click', showGame);
 
-function showGame() { 
+function showGame() {
     winningMessageElement.classList.remove('show')   
 }
 
@@ -71,6 +79,16 @@ function endGame(draw) {
 mainMenuButton.addEventListener('click', showEndGameScreen)
 
 function showEndGameScreen(draw) {
+    setMainMenuElements(draw);
+    showMainMenu();
+}
+
+function showMainMenu() {
+    winningMessageElement.classList.add("show");
+    undoButton.classList.remove("show")
+}
+
+function setMainMenuElements(draw) {
     if (draw) {
         winningMessageTextElement.innerText = ('Draw!');
         losingMessageTextElement.innerText = ('');
@@ -83,7 +101,13 @@ function showEndGameScreen(draw) {
         takeOverButton.innerText = ('Take Over');
         takeOverButton.classList.add("show");
     }
-    winningMessageElement.classList.add("show");
+}
+
+undoButton.addEventListener('click', undoTurn)
+
+function undoTurn() {
+    resetCell(lastMarkPlaced);
+    swapTurns();
 }
 
 takeOverButton.addEventListener('click', takeOverBoard)
@@ -115,6 +139,7 @@ function isDraw() {
 
 function placeMark(cell, currentClass) {
     cell.classList.add(currentClass);
+    lastMarkPlaced = cell;
 }
 
 function setCircleTurnTo(shouldBeCircleTurn) {
