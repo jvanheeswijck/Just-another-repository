@@ -19,7 +19,7 @@ body {
     align-content: center;
     justify-items: center;
     align-items: center;
-    grid-template-columns: repeat(3, auto);
+    grid-template-columns: repeat(4, auto);
 }
 
 .cell {
@@ -33,9 +33,23 @@ body {
     cursor: pointer;
 }
 
-.cell:first-child,
-.cell:nth-child(2),
+
+
+.cell:nth-child(4){
+    border-top: none;
+    border-right: none;
+    border-left: 1px solid;
+}
+
 .cell:nth-child(3) {
+    border-top: none;
+    border-left: none;
+    border-right: 1px solid;
+}
+
+.cell:nth-child(2) {
+    border-left: 1px solid;
+    border-right: 1px solid;
     border-top: none;
 }
 
@@ -154,6 +168,22 @@ body {
     border: 5px solid royalblue;
 }
 
+.rectangle {
+    width: 350px;
+    height: 100px;
+    background-color: deepskyblue;
+    color: gold;
+    border: 5px solid lightgreen;
+    font-size: 5rem;
+    padding: 1px;
+}
+
+.rectangle:hover{
+    background-color: indianred;
+    color: lemonchiffon;
+    border: 5px solid lightgoldenrodyellow;
+}
+
 #showGameButton {
     height: 100px;
     width: 350px;
@@ -169,35 +199,44 @@ body {
     background-color: rgb(241, 157, 0);
 }
 
-.rectangle {
+#takeOverButton {
+    display: none;
+    color: rgb(255, 146, 103);
+    border: 5px solid springgreen;
+    background-color: steelblue;
+    font-size: 3rem;
     height: 100px;
     width: 350px;
-    background-color: violet;
-   font-size: 6rem;
-   padding: 1px;
-   color: yellow;
-   border: 5px solid blueviolet;
 }
 
-.rectangle:hover {
-    color: chartreuse;
-    border: 5px solid pink;
-    background-color: purple;
+#takeOverButton.show {
+    display: block;
 }
 
-#undoButton {
-    background-color: salmon;
-    border: 5px solid olive;
-    color: turquoise;
-    width: 350px;
+#takeOverButton:hover {
+    color: lavender;
+    background-color: crimson;
+    border: 5px solid sienna;
+}
+
+#mainMenuButton {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
     height: 100px;
-    font-size: 4rem;
+    width: 350px;
+    color: black;
+    background-color: white;
+    border: 5px solid black;
+    font-size: 3rem;
 }
 
-#undoButton:hover {
-    background-color: rebeccapurple;
-    color: seashell;
-    border: 5px solid orangered;
+#mainMenuButton:hover {
+    color: white;
+    background-color: black;
+    border: 5px solid white;
 }
 
 .winning-message button {

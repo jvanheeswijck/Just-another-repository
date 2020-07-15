@@ -1,21 +1,24 @@
 const X_CLASS = 'x';
 const CIRCLE_CLASS = 'circle';
 const WINNING_COMBINATIONS = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6]   
+    [0, 1, 2, 3],
+    [4, 5, 6, 7],
+    [8, 9, 10, 11],
+    [12, 13, 14, 15],
+    [0, 4, 8, 12],
+    [1, 5, 9, 13],
+    [2, 6, 10, 14],
+    [3, 7, 11, 15],
+    [0, 5, 10, 15],
+    [3, 6, 9, 12]   
 ];
 const cellElements = document.querySelectorAll('[data-cell]');
 const board = document.getElementById('board');
 const winningMessageElement = document.getElementById('winningMessage');
 const restartButton = document.getElementById('restartButton');
 const showGameButton = document.getElementById('showGameButton');
-const undoButton = document.getElementById('undoButton')
+const takeOverButton = document.getElementById('takeOverButton');
+const mainMenuButton = document.getElementById('mainMenuButton');
 const winningMessageTextElement = document.querySelector('[data-winning-message-text]');
 const losingMessageTextElement = document.querySelector('[data-losing-message-text]');
 const peaceMessageTextElement = document.querySelector('[data-peace-message-text]');
@@ -65,24 +68,27 @@ function endGame(draw) {
     stopPlayerPlaying();
 }
 
+mainMenuButton.addEventListener('click', showEndGameScreen)
+
 function showEndGameScreen(draw) {
     if (draw) {
         winningMessageTextElement.innerText = ('Draw!');
         losingMessageTextElement.innerText = ('');
-        peaceMessageTextElement.innerText = ('Peace')
-        undoButton.innerText = ('Undo')
+        peaceMessageTextElement.innerText = ('Peace');
+        takeOverButton.classList.remove("show");
     } else {
         winningMessageTextElement.innerText = `${isCircleTurn ? "D's" : "X's"} Wins!`;
         losingMessageTextElement.innerText = `${isCircleTurn ? "X's" : "D's"} Loses!`;
-        peaceMessageTextElement.innerText = ('Peace')
-        undoButton.innerText = ('Undo')
+        peaceMessageTextElement.innerText = ('Peace');
+        takeOverButton.innerText = ('Take Over');
+        takeOverButton.classList.add("show");
     }
     winningMessageElement.classList.add("show");
 }
 
-undoButton.addEventListener('click', undoTurn)
+takeOverButton.addEventListener('click', takeOverBoard)
 
-function undoTurn() {
+function takeOverBoard() {
     if(!isCircleTurn) {
     cellElements.forEach( cell => {
         cell.classList.add(X_CLASS)
