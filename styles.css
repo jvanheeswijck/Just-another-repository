@@ -154,8 +154,8 @@ body {
     background-color: rgba(0, 0, 0, .9);
     justify-content: center;
     align-items: center;
-    color: midnightblue;
-    font-size: 6rem;
+    color: white;
+    font-size: 4rem;
     flex-direction: column; 
 }
 
@@ -291,4 +291,12 @@ body {
 
 .winning-message.show {
     display: flex;
+}
+
+#restartButton {
+    display: none;
+}
+
+#restartButton.show {
+    display: block;
 }

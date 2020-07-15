@@ -55,9 +55,9 @@ function handleClick(e) {
         const currentClass = isCircleTurn ? CIRCLE_CLASS : X_CLASS;
         placeMark(cell, currentClass);
         if (checkWin(currentClass)) {
-            endGame(false);
+            endGame();
         } else if (isDraw()) { 
-            endGame(true);
+            endGame();
         } else {
             swapTurns();
         }
@@ -71,15 +71,15 @@ function showGame() {
 }
 
  
-function endGame(draw) {
-    showEndGameScreen(draw);
+function endGame() {
+    showEndGameScreen();
     stopPlayerPlaying();
 }
 
 mainMenuButton.addEventListener('click', showEndGameScreen)
 
-function showEndGameScreen(draw) {
-    setMainMenuElements(draw);
+function showEndGameScreen() {
+    setMainMenuElements();
     showMainMenu();
 }
 
@@ -88,19 +88,38 @@ function showMainMenu() {
     undoButton.classList.remove("show")
 }
 
-function setMainMenuElements(draw) {
-    if (draw) {
+function setMainMenuElements() {
+    const currentClass = isCircleTurn ? CIRCLE_CLASS : X_CLASS;
+    if (checkWin(currentClass)) {
+        winningMessageTextElement.innerText = `${isCircleTurn ? "D's" : "X's"} Wins!`;
+        losingMessageTextElement.innerText = `${isCircleTurn ? "X's" : "D's"} Loses!`;
+        peaceMessageTextElement.innerText = ('Peace');
+        takeOverButton.classList.add("show");
+        restartButton.classList.add("show")
+    } else if (isDraw()) {
         winningMessageTextElement.innerText = ('Draw!');
         losingMessageTextElement.innerText = ('');
         peaceMessageTextElement.innerText = ('Peace');
         takeOverButton.classList.remove("show");
+        restartButton.classList.remove("show")
+    } else if (gameInProgress()) {
+        winningMessageTextElement.innerText = ('Game still in progress')
+        losingMessageTextElement.innerText = ('')
+        peaceMessageTextElement.innerText = ('Peace')
+        restartButton.classList.remove("show")
     } else {
-        winningMessageTextElement.innerText = `${isCircleTurn ? "D's" : "X's"} Wins!`;
-        losingMessageTextElement.innerText = `${isCircleTurn ? "X's" : "D's"} Loses!`;
-        peaceMessageTextElement.innerText = ('Peace');
-        takeOverButton.innerText = ('Take Over');
-        takeOverButton.classList.add("show");
+        winningMessageTextElement.innerText = ('Game started')
+        losingMessageTextElement.innerText = ('')
+        peaceMessageTextElement.innerText = ('Peace')
+        restartButton.classList.remove("show")
     }
+}
+
+function gameInProgress() {
+    return [...cellElements].some(cell => {
+        return cell.classList.contains(X_CLASS)
+          ||  cell.classList.contains(CIRCLE_CLASS);
+    })
 }
 
 undoButton.addEventListener('click', undoTurn)
@@ -118,12 +137,12 @@ function takeOverBoard() {
         cell.classList.add(X_CLASS)
         cell.classList.remove(CIRCLE_CLASS)
       }) 
-} else {
-    cellElements.forEach(cell=> {
-        cell.classList.add(CIRCLE_CLASS)
-        cell.classList.remove(X_CLASS)
-    })
-}
+    } else {
+        cellElements.forEach(cell=> {
+            cell.classList.add(CIRCLE_CLASS)
+            cell.classList.remove(X_CLASS)
+        })
+    }
 }
 function stopPlayerPlaying() {
     removeBoardHoverClasses();
