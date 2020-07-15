@@ -35,10 +35,15 @@ body {
 
 
 
-.cell:nth-child(4){
+.cell:first-child {
+    border-top: none;
+    border-left: none;
+}
+
+.cell:nth-child(4) {
     border-top: none;
     border-right: none;
-    border-left: 1px solid;
+    border-left: 1px solid black;
 }
 
 .cell:nth-child(3) {
@@ -53,19 +58,25 @@ body {
     border-top: none;
 }
 
-.cell:nth-child(3n + 1) {
+.cell:nth-child(4n + 1) {
     border-left: none;
+    border-bottom: none;
 }
 
-.cell:nth-child(3n + 3) {
+.cell:nth-child(4n + 4) {
+   border-right: none;
+}
+
+.cell:nth-child(15),
+.cell:nth-child(14),
+.cell:nth-child(13)  {
+    border-bottom: none;
+}
+
+.cell:nth-child(16) {
+    border-bottom: none;
     border-right: none;
 }
-
-.cell:last-child,
-.cell:nth-child(8),
-.cell:nth-child(7) {
-    border-bottom: none;
-} 
 
 .cell.x,
 .cell.circle {
@@ -225,12 +236,12 @@ body {
     left: 0px;
     right: 0px;
     bottom: 0px;
-    height: 100px;
-    width: 350px;
+    height: 70px;
+    width: 250px;
     color: black;
     background-color: white;
     border: 5px solid black;
-    font-size: 3rem;
+    font-size: 2rem;
 }
 
 #mainMenuButton:hover {
