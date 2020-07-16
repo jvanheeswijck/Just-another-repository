@@ -4,9 +4,8 @@
 
 :root {
     --cell-size: 120px;
-    --mark-size: calc(var(--cell-size) * 1);
+    --mark-size: calc(var(--cell-size) * .9);
 }
-
 body {
     margin: 0;
     background-color: darkgoldenrod;
@@ -123,7 +122,7 @@ body {
 .board.circle .cell:not(.x):not(.circle):hover::after {
     width: calc(var(--mark-size) * .7);
     height: calc(var(--mark-size) * .7);   
-    background-color: white;  
+    background-color: darkgoldenrod;  
 }
 
 .winning-message {
@@ -145,6 +144,17 @@ body {
     color: hotpink;
 }
 
+
+.coolSquare {
+    position: fixed;
+    top: 0;
+    height: 200px;
+    width: 450px;
+    background-color: yellow;
+    border: 5px solid orange;
+    color: red;
+    font-size: 5rem;
+}
 .square {
     background-color: lightgreen;
     font-size: 5rem;
@@ -216,12 +226,12 @@ body {
     position: fixed;
     top: 0px;
     left: 0px;
-    height: 100px;
-    width: 450px;
+    height: 80px;
+    width: 250px;
     color: black;
     background-color: white;
     border: 5px solid black;
-    font-size: 5rem;
+    font-size: 2rem;
 }
 
 #mainMenuButton:hover {
@@ -235,12 +245,12 @@ body {
     position: fixed;
     top: 0px;
     right: 0px;
-    height: 100px;
-    width: 450px;
+    height: 80px;
+    width: 250px;
     color: black;
     background-color: white;
     border: 5px solid black;
-    font-size: 5rem;
+    font-size: 2rem;
 }
 
 #undoButton:hover {

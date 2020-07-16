@@ -25,6 +25,7 @@ const undoButton = document.getElementById('undoButton')
 const winningMessageTextElement = document.querySelector('[data-winning-message-text]');
 const losingMessageTextElement = document.querySelector('[data-losing-message-text]');
 const peaceMessageTextElement = document.querySelector('[data-peace-message-text]');
+const spiritRaisingTextElement = document.querySelector('[data-spirit-raising-text]');
 let lastMarkPlaced = null;
 let isCircleTurn = false;
 let isGameEnd = false;
@@ -95,6 +96,7 @@ function setMainMenuElements() {
         winningMessageTextElement.innerText = `${isCircleTurn ? "D's" : "X's"} Wins!`;
         losingMessageTextElement.innerText = `${isCircleTurn ? "X's" : "D's"} Loses!`;
         peaceMessageTextElement.innerText = ('Peace');
+        spiritRaisingTextElement.innerText = ('Everything is awesome!')
         takeOverButton.classList.add("show");
         restartButton.classList.add("show")
         undoButton.classList.remove("show")
@@ -102,18 +104,21 @@ function setMainMenuElements() {
         winningMessageTextElement.innerText = ('Draw!');
         losingMessageTextElement.innerText = ('');
         peaceMessageTextElement.innerText = ('Peace');
+        spiritRaisingTextElement.innerText = ('Everything is awesome!')
         restartButton.classList.add("show")
         undoButton.classList.remove("show")
     } else if (gameInProgress()) {
         winningMessageTextElement.innerText = ('Game still in progress')
         losingMessageTextElement.innerText = ('')
         peaceMessageTextElement.innerText = ('Peace')
+        spiritRaisingTextElement.innerText = ('Everything is awesome!')
         restartButton.classList.remove("show")
         undoButton.classList.add("show")
     } else {
         winningMessageTextElement.innerText = ('Game started')
         losingMessageTextElement.innerText = ('')
         peaceMessageTextElement.innerText = ('Peace')
+        spiritRaisingTextElement.innerText = ('Everything is awesome!')
         takeOverButton.classList.remove("show")
         restartButton.classList.remove("show")
         undoButton.classList.add("show")
