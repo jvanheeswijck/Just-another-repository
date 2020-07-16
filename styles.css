@@ -3,12 +3,13 @@
 }
 
 :root {
-    --cell-size: 200px;
+    --cell-size: 120px;
     --mark-size: calc(var(--cell-size) * 1);
 }
 
 body {
     margin: 0;
+    background-color: darkgoldenrod;
 }
 
 .board {
@@ -19,13 +20,13 @@ body {
     align-content: center;
     justify-items: center;
     align-items: center;
-    grid-template-columns: repeat(4, auto);
+    grid-template-columns: repeat(5, auto);
 }
 
 .cell {
     width: var(--cell-size);
     height: var(--cell-size);
-    border: 1px solid black;
+    border: 5px solid black;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -33,49 +34,28 @@ body {
     cursor: pointer;
 }
 
-
-
-.cell:first-child {
+.cell:first-child,
+.cell:nth-child(2),
+.cell:nth-child(3),
+.cell:nth-child(4),
+.cell:nth-child(5) {
     border-top: none;
+}
+
+.cell:nth-child(5n + 1) {
     border-left: none;
 }
 
-.cell:nth-child(4) {
-    border-top: none;
+.cell:nth-child(5n + 5) {
     border-right: none;
-    border-left: 1px solid black;
 }
 
-.cell:nth-child(3) {
-    border-top: none;
-    border-left: none;
-    border-right: 1px solid;
-}
-
-.cell:nth-child(2) {
-    border-left: 1px solid;
-    border-right: 1px solid;
-    border-top: none;
-}
-
-.cell:nth-child(4n + 1) {
-    border-left: none;
+.cell:nth-child(25),
+.cell:nth-child(24),
+.cell:nth-child(23),
+.cell:nth-child(22),
+.cell:nth-child(21) {
     border-bottom: none;
-}
-
-.cell:nth-child(4n + 4) {
-   border-right: none;
-}
-
-.cell:nth-child(15),
-.cell:nth-child(14),
-.cell:nth-child(13)  {
-    border-bottom: none;
-}
-
-.cell:nth-child(16) {
-    border-bottom: none;
-    border-right: none;
 }
 
 .cell.x,
@@ -91,6 +71,8 @@ body {
 .cell.circle::before {
     background-color: turquoise;
 }
+
+
 
 
 
@@ -151,7 +133,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, .9);
+    background-color: rgba(246, 250, 1, 0.5);
     justify-content: center;
     align-items: center;
     color: white;
@@ -234,12 +216,12 @@ body {
     position: fixed;
     top: 0px;
     left: 0px;
-    height: 80px;
-    width: 250px;
+    height: 100px;
+    width: 450px;
     color: black;
     background-color: white;
     border: 5px solid black;
-    font-size: 2rem;
+    font-size: 5rem;
 }
 
 #mainMenuButton:hover {
@@ -253,12 +235,12 @@ body {
     position: fixed;
     top: 0px;
     right: 0px;
-    height: 80px;
-    width: 250px;
+    height: 100px;
+    width: 450px;
     color: black;
     background-color: white;
     border: 5px solid black;
-    font-size: 2rem;
+    font-size: 5rem;
 }
 
 #undoButton:hover {
@@ -283,7 +265,7 @@ body {
 } 
 
 .winning-message button:hover {
-    background-color: lightcoral;
+    background-color: rgb(161, 73, 73);
     color: greenyellow;
     border: 5px solid  green;
 
