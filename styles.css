@@ -125,6 +125,24 @@ body {
     background-color: darkgoldenrod;  
 }
 
+#powerUpButton {
+    border-radius: 50%;
+    display: none;
+    position: fixed;
+    bottom: 0;
+    right: 900px;
+    width: 150px;
+    height: 150px;
+    font: 3rem monospace;
+    background-color: gold;
+    border: 5px solid rebeccapurple;
+    color: brown;
+}
+
+#powerUpButton.show {
+    display: block;
+}
+
 .winning-message {
     display: none;
     position: fixed;
@@ -136,7 +154,7 @@ body {
     justify-content: center;
     align-items: center;
     color: white;
-    font-size: 4rem;
+    font:  5rem monospace;
     flex-direction: column; 
 }
 
@@ -148,16 +166,22 @@ body {
 .coolSquare {
     position: fixed;
     top: 0;
-    height: 200px;
+    height: 190px;
     width: 450px;
     background-color: yellow;
     border: 5px solid orange;
     color: red;
-    font-size: 5rem;
+    font-size: 4.5rem;
+}
+
+.coolSquare:hover {
+    color: darkmagenta;
+    background-color: blue;
+    border: 5px solid lightgreen;
 }
 .square {
     background-color: lightgreen;
-    font-size: 5rem;
+    font: 5rem monospace;
     padding: 1px;
     border: 5px solid indigo;
     color: darkblue;
@@ -190,14 +214,14 @@ body {
 #showGameButton {
     height: 100px;
     width: 350px;
-    font-size: 3rem;
+    font-size: 4.25rem;
     color: sandybrown;
-    background-color: silver;
+    background-color: darkblue;
     border: 5px solid yellowgreen;
 }
 
 #showGameButton:hover {
-    color: thistle;
+    color: darkgreen;
     border: 5px solid rgb(55, 0, 255);
     background-color: rgb(241, 157, 0);
 }
@@ -207,7 +231,7 @@ body {
     color: rgb(255, 146, 103);
     border: 5px solid springgreen;
     background-color: steelblue;
-    font-size: 3rem;
+    font-size: 4.25rem;
     height: 100px;
     width: 350px;
 }
@@ -231,7 +255,7 @@ body {
     color: black;
     background-color: white;
     border: 5px solid black;
-    font-size: 2rem;
+    font: 3rem monospace;
 }
 
 #mainMenuButton:hover {
@@ -250,7 +274,7 @@ body {
     color: black;
     background-color: white;
     border: 5px solid black;
-    font-size: 2rem;
+    font: 3.75rem monospace;
 }
 
 #undoButton:hover {
@@ -263,6 +287,15 @@ body {
     display: block;
 }
 
+.bananaText {
+    height: 150px;
+    width: 350px;
+    font: 2rem monospace;
+    background-color: lightgreen;
+    color: darkblue;
+    border: 2px solid yellow;
+}
+
 .winning-message button {
     color: lightcoral;
     font-size: 5rem;
@@ -272,6 +305,7 @@ body {
     cursor: pointer; 
     width: 350px;
     height: 100px;
+    font: 5.5rem monospace;
 } 
 
 .winning-message button:hover {

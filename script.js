@@ -21,7 +21,8 @@ const restartButton = document.getElementById('restartButton');
 const showGameButton = document.getElementById('showGameButton');
 const takeOverButton = document.getElementById('takeOverButton');
 const mainMenuButton = document.getElementById('mainMenuButton');
-const undoButton = document.getElementById('undoButton')
+const undoButton = document.getElementById('undoButton');
+const doubleTurnButton = document.getElementById('powerUpButton');
 const winningMessageTextElement = document.querySelector('[data-winning-message-text]');
 const losingMessageTextElement = document.querySelector('[data-losing-message-text]');
 const peaceMessageTextElement = document.querySelector('[data-peace-message-text]');
@@ -29,6 +30,7 @@ const spiritRaisingTextElement = document.querySelector('[data-spirit-raising-te
 let lastMarkPlaced = null;
 let isCircleTurn = false;
 let isGameEnd = false;
+let isExtraTurn = false;
 
 startGame();
 
@@ -40,7 +42,8 @@ function startGame() {
         resetCell(cell);
       });
     winningMessageElement.classList.remove('show');
-    undoButton.classList.add('show')
+    undoButton.classList.add('show');
+    doubleTurnButton.classList.add("show");
     isGameEnd = false;
     lastMarkPlaced = null;
 }
@@ -61,6 +64,8 @@ function handleClick(e) {
             endGame();
         } else if (isDraw()) { 
             endGame();
+        } else if (isExtraTurn) {
+            isExtraTurn = false;
         } else {
             swapTurns();
         }
@@ -100,6 +105,7 @@ function setMainMenuElements() {
         takeOverButton.classList.add("show");
         restartButton.classList.add("show")
         undoButton.classList.remove("show")
+        doubleTurnButton.classList.remove("show")
     } else if (isDraw()) {
         winningMessageTextElement.innerText = ('Draw!');
         losingMessageTextElement.innerText = ('');
@@ -107,6 +113,7 @@ function setMainMenuElements() {
         spiritRaisingTextElement.innerText = ('Everything is awesome!')
         restartButton.classList.add("show")
         undoButton.classList.remove("show")
+        doubleTurnButton.classList.remove("show")
     } else if (gameInProgress()) {
         winningMessageTextElement.innerText = ('Game still in progress')
         losingMessageTextElement.innerText = ('')
@@ -123,6 +130,12 @@ function setMainMenuElements() {
         restartButton.classList.remove("show")
         undoButton.classList.add("show")
     }
+}
+
+doubleTurnButton.addEventListener('click', doubleTurn)
+
+function doubleTurn() {
+    isExtraTurn = true;
 }
 
 function gameInProgress() {
