@@ -114,6 +114,7 @@ function setMainMenuElements() {
         restartButton.classList.add("show")
         undoButton.classList.remove("show")
         doubleTurnButton.classList.remove("show")
+        removeMarkButton.classList.remove("show")
     } else if (isDraw()) {
         winningMessageTextElement.innerText = ('Draw!');
         losingMessageTextElement.innerText = ('');
@@ -123,6 +124,7 @@ function setMainMenuElements() {
         restartButton.classList.add("show")
         undoButton.classList.remove("show")
         doubleTurnButton.classList.remove("show")
+        removeMarkButton.classList.remove("show")
     } else if (gameInProgress()) {
         winningMessageTextElement.innerText = ('Game still in progress')
         losingMessageTextElement.innerText = ('')
@@ -131,6 +133,7 @@ function setMainMenuElements() {
         showGameButton.innerText = ('Keep on playing')
         restartButton.classList.remove("show")
         undoButton.classList.add("show")
+        removeMarkButton.classList.add("show")
     } else {
         winningMessageTextElement.innerText = ('Game started')
         losingMessageTextElement.innerText = ('')
@@ -140,6 +143,7 @@ function setMainMenuElements() {
         showGameButton.innerText = ('Keep on playing')
         restartButton.classList.remove("show")
         undoButton.classList.add("show")
+        removeMarkButton.classList.add("show")
     }
 }
 
