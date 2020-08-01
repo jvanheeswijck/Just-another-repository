@@ -19,7 +19,7 @@ body {
     align-content: center;
     justify-items: center;
     align-items: center;
-    grid-template-columns: repeat(5, auto);
+    grid-template-columns: repeat(4, auto);
 }
 
 .cell {
@@ -36,24 +36,22 @@ body {
 .cell:first-child,
 .cell:nth-child(2),
 .cell:nth-child(3),
-.cell:nth-child(4),
-.cell:nth-child(5) {
+.cell:nth-child(4) {
     border-top: none;
 }
 
-.cell:nth-child(5n + 1) {
+.cell:nth-child(4n + 1) {
     border-left: none;
 }
 
-.cell:nth-child(5n + 5) {
+.cell:nth-child(4n + 4) {
     border-right: none;
 }
 
-.cell:nth-child(25),
-.cell:nth-child(24),
-.cell:nth-child(23),
-.cell:nth-child(22),
-.cell:nth-child(21) {
+.cell:nth-child(13),
+.cell:nth-child(14),
+.cell:nth-child(15),
+.cell:nth-child(16) {
     border-bottom: none;
 }
 
@@ -72,9 +70,20 @@ body {
 }
 
 
+#removeMarkButton {
+    display: none;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    font: 3rem monospace;
+    background-color: darkblue;
+    color: blueviolet;
+    border:5px solid greenyellow;
+}
 
-
-
+#removeMarkButton.show {
+    display: block;
+}
 
 
 .board.x .cell:not(.x):not(.circle):hover::before,
@@ -128,9 +137,6 @@ body {
 #powerUpButton {
     border-radius: 50%;
     display: none;
-    position: fixed;
-    bottom: 0;
-    right: 900px;
     width: 150px;
     height: 150px;
     font: 3rem monospace;
@@ -141,6 +147,14 @@ body {
 
 #powerUpButton.show {
     display: block;
+}
+
+.buttonContainer {
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    justify-content: space-evenly;
+    width: 100vw;
 }
 
 .winning-message {
@@ -214,7 +228,7 @@ body {
 #showGameButton {
     height: 100px;
     width: 350px;
-    font-size: 4.25rem;
+    font-size: 2.25rem;
     color: sandybrown;
     background-color: darkblue;
     border: 5px solid yellowgreen;
