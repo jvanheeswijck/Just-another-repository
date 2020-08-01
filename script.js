@@ -1,18 +1,16 @@
 const X_CLASS = 'x';
 const CIRCLE_CLASS = 'circle';
 const WINNING_COMBINATIONS = [
-    [0, 1, 2, 3, 4],
-    [5, 6, 7, 8, 9],
-    [10, 11, 12, 13, 14],
-    [15, 16, 17, 18, 19],
-    [20, 21, 22, 23, 24],
-    [0, 5, 10, 15, 20],
-    [1, 6, 11, 16, 21],
-    [2, 7, 12, 17, 22],
-    [3, 8, 13, 18, 23],
-    [4, 9, 14, 19, 24],
-    [0, 6, 12, 18, 24],
-    [4, 8, 12, 16, 20]   
+    [0, 1, 2, 3],
+    [4, 5, 6, 7],
+    [8, 9, 10, 11],
+    [12, 13, 14, 15],
+    [0, 4, 8, 12],
+    [1, 5, 9, 13],
+    [2, 6, 10, 14],
+    [3, 7, 11, 15],
+    [0, 5, 9, 13],
+    [3, 6,, 9, 12]   
 ];
 const cellElements = document.querySelectorAll('[data-cell]');
 const board = document.getElementById('board');
@@ -21,7 +19,9 @@ const restartButton = document.getElementById('restartButton');
 const showGameButton = document.getElementById('showGameButton');
 const takeOverButton = document.getElementById('takeOverButton');
 const mainMenuButton = document.getElementById('mainMenuButton');
-const undoButton = document.getElementById('undoButton')
+const undoButton = document.getElementById('undoButton');
+const doubleTurnButton = document.getElementById('powerUpButton');
+const removeMarkButton = document.getElementById('removeMarkButton');
 const winningMessageTextElement = document.querySelector('[data-winning-message-text]');
 const losingMessageTextElement = document.querySelector('[data-losing-message-text]');
 const peaceMessageTextElement = document.querySelector('[data-peace-message-text]');
@@ -29,6 +29,7 @@ const spiritRaisingTextElement = document.querySelector('[data-spirit-raising-te
 let lastMarkPlaced = null;
 let isCircleTurn = false;
 let isGameEnd = false;
+let isExtraTurn = false;
 
 startGame();
 
@@ -40,7 +41,9 @@ function startGame() {
         resetCell(cell);
       });
     winningMessageElement.classList.remove('show');
-    undoButton.classList.add('show')
+    undoButton.classList.add('show');
+    doubleTurnButton.classList.add("show");
+    removeMarkButton.classList.add("show");
     isGameEnd = false;
     lastMarkPlaced = null;
 }
@@ -61,16 +64,25 @@ function handleClick(e) {
             endGame();
         } else if (isDraw()) { 
             endGame();
+        } else if (isExtraTurn) {
+            isExtraTurn = false;
         } else {
             swapTurns();
         }
     }
 }
 
+removeMarkButton.addEventListener('click', removeMark)
+
+function removeMark() {
+   resetCell(lastMarkPlaced);
+   removeMarkButton.classList.remove("show")
+}
+
 showGameButton.addEventListener('click', showGame);
 
 function showGame() {
-    winningMessageElement.classList.remove('show')   
+    winningMessageElement.classList.remove('show');   
 }
 
  
@@ -97,21 +109,26 @@ function setMainMenuElements() {
         losingMessageTextElement.innerText = `${isCircleTurn ? "X's" : "D's"} Loses!`;
         peaceMessageTextElement.innerText = ('Peace');
         spiritRaisingTextElement.innerText = ('Everything is awesome!')
+        showGameButton.innerText = ('Show game')
         takeOverButton.classList.add("show");
         restartButton.classList.add("show")
         undoButton.classList.remove("show")
+        doubleTurnButton.classList.remove("show")
     } else if (isDraw()) {
         winningMessageTextElement.innerText = ('Draw!');
         losingMessageTextElement.innerText = ('');
         peaceMessageTextElement.innerText = ('Peace');
         spiritRaisingTextElement.innerText = ('Everything is awesome!')
+        showGameButton.innerText = ('Show game')
         restartButton.classList.add("show")
         undoButton.classList.remove("show")
+        doubleTurnButton.classList.remove("show")
     } else if (gameInProgress()) {
         winningMessageTextElement.innerText = ('Game still in progress')
         losingMessageTextElement.innerText = ('')
         peaceMessageTextElement.innerText = ('Peace')
         spiritRaisingTextElement.innerText = ('Everything is awesome!')
+        showGameButton.innerText = ('Keep on playing')
         restartButton.classList.remove("show")
         undoButton.classList.add("show")
     } else {
@@ -120,9 +137,17 @@ function setMainMenuElements() {
         peaceMessageTextElement.innerText = ('Peace')
         spiritRaisingTextElement.innerText = ('Everything is awesome!')
         takeOverButton.classList.remove("show")
+        showGameButton.innerText = ('Keep on playing')
         restartButton.classList.remove("show")
         undoButton.classList.add("show")
     }
+}
+
+doubleTurnButton.addEventListener('click', doubleTurn)
+
+function doubleTurn() {
+    isExtraTurn = true;
+    doubleTurnButton.classList.remove("show")
 }
 
 function gameInProgress() {
@@ -178,6 +203,8 @@ function setCircleTurnTo(shouldBeCircleTurn) {
 
 function swapTurns() {
     setCircleTurnTo(!isCircleTurn);
+    doubleTurnButton.classList.add("show")
+    removeMarkButton.classList.add("show")
 }
 
 function setBoardHoverClass() {
