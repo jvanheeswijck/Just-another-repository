@@ -133,7 +133,6 @@ function setMainMenuElements() {
         showGameButton.innerText = ('Keep on playing')
         restartButton.classList.remove("show")
         undoButton.classList.add("show")
-        removeMarkButton.classList.add("show")
     } else {
         winningMessageTextElement.innerText = ('Game started')
         losingMessageTextElement.innerText = ('')
@@ -143,7 +142,6 @@ function setMainMenuElements() {
         showGameButton.innerText = ('Keep on playing')
         restartButton.classList.remove("show")
         undoButton.classList.add("show")
-        removeMarkButton.classList.add("show")
     }
 }
 

@@ -78,7 +78,7 @@ body {
     font: 3rem monospace;
     background-color: darkblue;
     color: blueviolet;
-    border:5px solid greenyellow;
+    border: 5px solid greenyellow;
 }
 
 #removeMarkButton.show {
